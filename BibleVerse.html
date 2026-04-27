@@ -1,0 +1,149 @@
+<!-- ===================== BODY CONTENT ===================== -->
+
+<div id="card">
+    <!-- Title -->
+    <h2>📖 Daily Bible Verse</h2>
+
+    <!-- Verse Display -->
+    <p id="verseText">
+        "I can do all things through Christ who strengthens me."
+    </p>
+    <span id="verseRef">— Philippians 4:13</span>
+
+    <!-- Buttons -->
+    <div class="controls">
+        <button onclick="newVerse()">New Verse</button>
+        <button onclick="toggleTheme()">Change Theme</button>
+    </div>
+</div>
+
+<!-- ===================== BIBLICAL DESIGN (CSS) ===================== -->
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* Soft parchment-like background */
+        background: linear-gradient(135deg, #f5e6c8, #e8d3a3);
+        font-family: "Georgia", serif;
+    }
+
+    /* Card styled like a scripture page */
+    #card {
+        width: 360px;
+        padding: 25px;
+        background: #fffaf0;
+        border: 2px solid #d4af37; /* gold accent */
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+        color: #6b4f1d;
+    }
+
+    /* Verse text */
+    #verseText {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    /* Reference styling */
+    #verseRef {
+        display: block;
+        font-size: 13px;
+        color: #8b6f3d;
+        margin-bottom: 15px;
+    }
+
+    /* Buttons */
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    button {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 6px;
+        background: #d4af37;
+        color: white;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    button:hover {
+        opacity: 0.85;
+    }
+
+    /* Dark theme toggle */
+    .dark {
+        background: #2c2c2c ;
+        color: #f5f5f5;
+    }
+
+    .dark #card {
+        background: #3a3a3a;
+        border-color: #c9a646;
+    }
+
+    .dark #verseText {
+        color: #f5f5f5;
+    }
+
+    .dark #verseRef {
+        color: #d6c08d;
+    }
+</style>
+
+<!-- ===================== SCRIPT ===================== -->
+<script>
+/*
+    Array of Bible verses (can be expanded)
+*/
+const verses = [
+    {
+        text: "I can do all things through Christ who strengthens me.",
+        ref: "Philippians 4:13"
+    },
+    {
+        text: "For I know the plans I have for you, declares the Lord.",
+        ref: "Jeremiah 29:11"
+    },
+    {
+        text: "The Lord is my shepherd; I shall not want.",
+        ref: "Psalm 23:1"
+    },
+    {
+        text: "Trust in the Lord with all your heart.",
+        ref: "Proverbs 3:5"
+    }
+];
+
+/*
+    Function: newVerse()
+    Purpose: Displays a random verse from the list
+*/
+function newVerse() {
+    const random = Math.floor(Math.random() * verses.length);
+    document.getElementById("verseText").textContent = `"${verses[random].text}"`;
+    document.getElementById("verseRef").textContent = `— ${verses[random].ref}`;
+}
+
+/*
+    Function: toggleTheme()
+    Purpose: Switch between light and dark theme
+*/
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+</script>

@@ -1,0 +1,141 @@
+<!-- ===================== BODY CONTENT ===================== -->
+
+<div id="banner">
+    <h1>Andrea Ifurung</h1>
+
+    <!-- Input Section -->
+    <div class="row">
+        <input type="text" id="itemInput" placeholder="Type something to explore...">
+        <button onclick="addItem()">+</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="row small">
+        <button onclick="changeFont()">Font</button>
+        <button onclick="makeBold()">Bold</button>
+    </div>
+
+    <!-- List -->
+    <ul id="exploreList">
+        <li>Bachelor of Science in Computer Science</li>
+        <li>Love baking</li>
+        <li>Multimedia Development</li>
+    </ul>
+</div>
+
+<!-- ===================== CLEAN MODERN DESIGN ===================== -->
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #fafafa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    #banner {
+        width: 340px;
+        padding: 20px;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0 4px 12px #e8be34;
+    }
+
+    h1 {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        color: #e8be34;
+        letter-spacing: 0.5px;
+    }
+
+    .row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .row.small button {
+        flex: 1;
+    }
+
+    input {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        outline: none;
+        font-size: 13px;
+        background: transparent;
+    }
+
+    button {
+        padding: 8px 10px;
+        border: none;
+        background: #e8be34;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    li {
+        font-size: 13px;
+        padding: 6px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+</style>
+
+<!-- ===================== SCRIPT ===================== -->
+<script>
+/*
+    Adds a new list item from input
+*/
+function addItem() {
+    const input = document.getElementById("itemInput");
+    const value = input.value.trim();
+
+    if (!value) return;
+
+    const li = document.createElement("li");
+    li.textContent = value;
+
+    document.getElementById("exploreList").appendChild(li);
+    input.value = "";
+}
+
+/*
+    Changes font style of list items
+*/
+function changeFont() {
+    const items = document.querySelectorAll("#exploreList li");
+
+    items.forEach(item => {
+        item.style.fontFamily = "Verdana, sans-serif, calibri, arial";
+    });
+}
+
+/*
+    Toggles bold styling
+*/
+function makeBold() {
+    const items = document.querySelectorAll("#exploreList li");
+
+    items.forEach(item => {
+        item.style.fontWeight =
+            item.style.fontWeight === "bold" ? "normal" : "bold";
+    });
+}
+</script>
